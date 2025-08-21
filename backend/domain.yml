@@ -1,0 +1,360 @@
+version: "3.1"
+
+intents:
+  - goodbye
+  - main_menu
+  - explore_services
+  - service_whatsapp
+  - service_sms
+  - service_email
+  - service_chatbot
+  - pricing_info
+  - pricing_whatsapp
+  - pricing_sms
+  - pricing_email
+  - pricing_chatbot
+  - request_demo
+  - customer_support_menu
+  - contact_support
+  - contact_sales
+  - exit_form
+  - switch_to_pricing
+  - switch_to_explore_services
+  - switch_to_support
+  - switch_to_sales
+  - demo_module_menu
+  - fallback_custom
+  - give_feedback
+  - continue
+  - request_live_agent
+  - handover_complete
+  - user_message
+  
+entities:
+  - name
+  - company
+  - email
+  - phone
+  - service
+  - use_case
+  - preferred_time
+  - support_name
+  - support_email
+  - support_company
+  - support_query
+  - sales_name
+  - sales_email
+  - sales_company
+  - sales_query
+  - user_channel
+  - message_id    #feedback_entities
+  - feedback_type
+  - feedback_text
+
+slots:
+  name:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: demo_form
+            requested_slot: name
+  company:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: demo_form
+            requested_slot: company
+  email:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: demo_form
+            requested_slot: email
+  phone:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: demo_form
+            requested_slot: phone
+  service:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: demo_form
+            requested_slot: service
+  use_case:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: demo_form
+            requested_slot: use_case
+  preferred_time:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: demo_form
+            requested_slot: preferred_time
+  
+  support_name:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: support_form
+            requested_slot: support_name
+  support_email:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: support_form
+            requested_slot: support_email
+  support_company:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: support_form
+            requested_slot: support_company
+  support_phone:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: support_form
+            requested_slot: support_phone
+  support_query:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: support_form
+            requested_slot: support_query
+  support_product:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: support_form
+            requested_slot: support_product
+
+  support_priority:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: support_form
+            requested_slot: support_priority
+
+  sales_name:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: sales_form
+            requested_slot: sales_name
+  sales_email:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: sales_form
+            requested_slot: sales_email
+  sales_company:
+    type: text
+    mappings:
+      - type: from_text
+        conditions: 
+          - active_loop: sales_form
+            requested_slot: sales_company
+  sales_query:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: sales_form
+            requested_slot: sales_query
+  sales_designation:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: sales_form
+            requested_slot: sales_designation
+
+  sales_service:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: sales_form
+            requested_slot: sales_service
+
+  sales_phone:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: sales_form
+            requested_slot: sales_phone
+
+  user_channel:
+    type: text
+    influence_conversation: true
+    mappings:
+     - type: custom
+  
+  message_id:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: message_id
+
+  feedback_type:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: feedback_type
+
+  feedback_text:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: feedback_text
+  
+  live_agent:
+    type: bool
+    initial_value: false
+    influence_conversation: true
+    mappings:
+      - type: custom  
+
+
+forms:
+  demo_form:
+    required_slots:
+      - name
+      - company
+      - email
+      - phone
+      - service
+      - use_case
+      - preferred_time
+    ignored_intents:
+      - exit_form
+      - switch_to_pricing
+      - switch_to_explore_services
+      - switch_to_support
+      - switch_to_sales
+  support_form:
+    required_slots:
+      - support_name
+      - support_email
+      - support_company
+      - support_phone
+      - support_product
+      - support_priority
+      - support_query
+    ignored_intents:
+      - exit_form
+      - switch_to_pricing
+      - switch_to_explore_services
+      - switch_to_sales
+      - demo_module_menu
+  sales_form:
+    required_slots:
+      - sales_name
+      - sales_email
+      - sales_company
+      - sales_phone
+      - sales_designation
+      - sales_service
+      - sales_query
+    ignored_intents:
+      - exit_form
+      - switch_to_pricing
+      - switch_to_explore_services
+      - switch_to_support
+      - demo_module_menu
+    
+    
+
+responses:
+  utter_goodbye:
+    - text: |
+        👋 Thank you for connecting with **CFSD Digital Services**!
+
+        We truly appreciate your time. If you ever need 💬 Chatbots, 📩 Bulk Email, 📲 WhatsApp API, or 📢 SMS Campaigns — we're just a message away. 🚀
+
+        Wanna take one last look? 👇
+      buttons:
+        - title: 🚀 Launch Services Menu
+          payload: /main_menu
+  
+  utter_live_agent_connecting:
+    - text: "Connecting you to a live agent..."
+    
+  utter_handover_complete:
+    - text: "Bot is back online. How can I assist you?"
+  
+  
+actions:
+  - action_set_user_channel
+  - action_main_menu
+  - action_submit_demo
+  - action_submit_support_form
+  - action_submit_sales_form
+  - action_log_explore_service
+  - action_log_conversation
+  - action_log_pricing
+  - action_explore_services
+  - action_pricing_info
+  - action_service_whatsapp
+  - action_service_sms
+  - action_service_email
+  - action_service_chatbot
+  - action_pricing_whatsapp
+  - action_pricing_sms
+  - action_pricing_email
+  - action_pricing_chatbot
+  - action_ask_name
+  - action_ask_company
+  - action_ask_email
+  - action_ask_phone
+  - action_ask_service
+  - action_ask_use_case
+  - action_ask_preferred_time
+  - action_ask_support_name
+  - action_ask_support_email
+  - action_ask_support_company
+  - action_ask_support_phone
+  - action_ask_support_product
+  - action_ask_support_priority
+  - action_ask_support_query
+  - action_ask_sales_name
+  - action_ask_sales_email
+  - action_ask_sales_company
+  - action_ask_sales_phone
+  - action_ask_sales_designation
+  - action_ask_sales_service
+  - action_ask_sales_query
+  - action_customer_support_menu
+  - validate_demo_form
+  - validate_support_form
+  - validate_sales_form
+  - action_exit_form_message
+  - action_reset_all_slots
+  - action_handle_demo_module_interrupt
+  - action_custom_fallback
+  - action_store_feedback
+  - action_continue_chat
+  - action_request_live_agent
+  - action_handover_complete
+  # - action_show_carousel

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrustBot | CFSD Cloudforce</title>
+
+    <!-- Rasa Chat Widget -->
+    <script type="module"
+        src="https://unpkg.com/@rasahq/chat-widget-ui/dist/rasa-chatwidget/rasa-chatwidget.esm.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@rasahq/chat-widget-ui/dist/rasa-chatwidget/rasa-chatwidget.css" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            color: #333;
+            text-align: center;
+        }
+
+        .header {
+            padding: 50px 20px 80px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #0d47a1;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #555;
+            margin: 0;
+        }
+
+        rasa-chatbot-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+        <h1>CFSD Cloudforce</h1>
+        <p>Your Trusted Partner for Bulk SMS, WhatsApp API & Chatbot Automation</p>
+    </div>
+
+    <!-- Rasa Chatbot Widget -->
+    <rasa-chatbot-widget server-url="http://localhost:5005" initial-payload="/main_menu" title="TrustBot"
+        subtitle="Powered by CFSD Cloudforce" primary-color="#0d47a1">
+    </rasa-chatbot-widget>
+</body>
+
+</html>

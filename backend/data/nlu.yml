@@ -1,0 +1,237 @@
+version: "3.1"
+
+nlu:
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: main_menu
+  examples: |
+    - show me the main menu
+    - main menu
+    - go to main menu
+    - back to start
+    - start again
+    - home
+    - hi
+    - hello
+    - hey
+    - good morning
+    - good evening
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: explore_services
+  examples: |
+    - explore services
+    - show me your services
+    - what services do you offer
+    - services
+    - I want to know about your services
+
+- intent: service_whatsapp
+  examples: |
+    - WhatsApp
+    - WhatsApp Marketing
+
+- intent: service_sms
+  examples: |
+    - SMS
+    - SMS Campaigns
+
+- intent: service_email
+  examples: |
+    - Email
+    - Email Automation
+
+- intent: service_chatbot
+  examples: | 
+    - Chatbot
+    - chatbot Automation
+
+- intent: pricing_info
+  examples: |
+    - show me pricing
+    - pricing details
+    - view pricing
+    - how much does it cost
+    - I want to see your pricing
+    - send me pricing plans
+
+- intent: pricing_whatsapp
+  examples: |
+    - WhatsApp pricing
+    - cost of WhatsApp service
+    - WhatsApp package
+    - pricing for whatsapp
+
+- intent: pricing_sms
+  examples: |
+    - SMS pricing
+    - cost of SMS
+    - SMS plan details
+    - pricing for sms
+
+- intent: pricing_email
+  examples: |
+    - Email pricing
+    - what is the price for email service
+    - email plan cost
+    - pricing for email
+
+- intent: pricing_chatbot
+  examples: |
+    - Chatbot pricing
+    - chatbot package
+    - pricing for chatbot
+
+- intent: request_demo
+  examples: |
+    - I want to request a demo
+    - schedule a demo
+    - book a demo
+    - demo request
+    - can I get a product demo?
+
+- intent: customer_support_menu
+  examples: |
+    - I need customer support
+    - help me with support
+    - talk to support
+    - customer support
+    - I need assistance
+
+- intent: contact_support
+  examples: |
+    - contact support
+    - I want to talk to support
+    - support team please
+
+- intent: contact_sales
+  examples: |
+    - contact sales
+    - I want to speak to sales
+    - sales team please
+
+- intent: exit_form
+  examples: |
+    - exit
+    - stop
+    - cancel
+    - I want to exit
+    - quit
+    - leave this form
+    - back to main menu
+
+
+- intent: demo_module_menu
+  examples: |
+    - I want to book a demo
+    - show me demo module
+    - demo menu
+    - switch to demo
+    - go to demo module
+    - goes to request demo form
+    - switch to request demo
+
+- intent: switch_to_pricing
+  examples: |
+    - pricing
+    - show pricing
+    - view pricing plans
+    - goes to pricing menu
+    
+- intent: switch_to_explore_services
+  examples: |
+    - show me services
+    - what services you offer
+    - goes to services
+    - goes to explore services
+    
+
+- intent: switch_to_support
+  examples: |
+    - support
+    - I need support
+    - contact support team
+    - goes to support page
+    - suport form 
+    - support module
+    - goes to support menu
+    
+
+- intent: switch_to_sales
+  examples: |
+    - sales inquiry
+    - I have a sales query
+    - goes to sales page
+    - sales form
+    - sales module
+    - goes to sales menu
+
+- intent: fallback_custom
+  examples: |
+    - fallback
+    - jadkjaj'adfjs
+    - afdksj
+    - bla_bla
+    - [kjer]
+    - What is the weather today?
+    - Tell me a joke
+    - Who is the president of India?
+    - What's 2 plus 2?
+    - Sing me a song
+    - Open Google
+    - How tall is Mount Everest?
+    - Play a video for me
+    - Who won the last cricket match?
+    - Can you call me?
+    - Book a flight ticket
+    - Where is the nearest coffee shop?
+    - How to make pizza at home?
+    - Tell me about space exploration
+    - What is your name?
+    - Are you a robot?
+    - How old are you?
+    - Translate hello in French
+    - Do you love me?
+    - How to invest in stock market?
+
+#today
+- intent: give_feedback
+  examples: |
+    - /give_feedback{"message_id": "12345", "feedback_type": "like", "feedback_text": "Nice response"}
+    - /give_feedback{"message_id": "98765", "feedback_type": "dislike", "feedback_text": "Didn't help me"}
+    - /give_feedback{"message_id": "abcde", "feedback_type": "like", "feedback_text": "Very informative"}
+
+- intent: continue
+  examples: |
+    - continue
+    - keep chatting
+    - resume
+    - carry on
+    - proceed
+
+- intent: request_live_agent
+  examples: |
+    - I want to talk to a human
+    - connect me to live agent
+    - customer support agent please
+
+- intent: handover_complete
+  examples: |
+    - you can take over again
+    - end live agent chat

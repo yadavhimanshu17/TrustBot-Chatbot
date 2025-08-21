@@ -1,0 +1,28 @@
+# Python venv
+backend/rasavenv/
+backend/__pycache__/
+*.pyc
+backend/models/
+backend/.rasa
+/models/*
+!/models/.gitkeep
+
+# Node modules
+frontend/node_modules/
+frontend-agent-console/node_modules/
+fronted-chathistory/node_modules/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+__pycache__/
+*.pyc
+*.pkl
+*.zip
+*.mp4
+*.db
+.venv/

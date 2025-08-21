@@ -1,0 +1,253 @@
+version: "3.1"
+
+rules:
+- rule: Say goodbye anytime the user says goodbye inside rules
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+    - action: action_log_conversation
+
+- rule: Show Main Menu
+  steps:
+    - intent: main_menu
+    - action: action_set_user_channel
+    - action: action_main_menu
+
+- rule: Explore Services
+  steps:
+    - intent: explore_services
+    - action: action_set_user_channel
+    - action: action_explore_services
+    - action: action_log_conversation
+
+- rule: Service - WhatsApp
+  steps:
+    - intent: service_whatsapp
+    - action: action_log_explore_service
+    - action: action_service_whatsapp
+
+- rule: Service - SMS
+  steps:
+    - intent: service_sms
+    - action: action_log_explore_service
+    - action: action_service_sms
+
+- rule: Service - Email
+  steps:
+    - intent: service_email
+    - action: action_log_explore_service
+    - action: action_service_email
+
+- rule: Service - Chatbot
+  steps:
+    - intent: service_chatbot
+    - action: action_log_explore_service
+    - action: action_service_chatbot
+
+- rule: Show Pricing Menu
+  steps:
+    - intent: pricing_info
+    - action: action_set_user_channel
+    - action: action_pricing_info
+    - action: action_log_conversation
+
+- rule: Pricing - WhatsApp
+  steps:
+    - intent: pricing_whatsapp
+    - action: action_log_pricing
+    - action: action_pricing_whatsapp
+
+- rule: Pricing - SMS
+  steps:
+    - intent: pricing_sms
+    - action: action_log_pricing
+    - action: action_pricing_sms
+
+- rule: Pricing - Email
+  steps:
+    - intent: pricing_email
+    - action: action_log_pricing
+    - action: action_pricing_email
+
+- rule: Pricing - Chatbot
+  steps:
+    - intent: pricing_chatbot
+    - action: action_log_pricing
+    - action: action_pricing_chatbot
+
+- rule: Start demo form
+  steps:
+    - intent: request_demo
+    - action: demo_form
+    - active_loop: demo_form
+
+- rule: Submit demo form
+  condition:
+    - active_loop: demo_form
+  steps:
+    - action: demo_form
+    - active_loop: null
+    - action: action_submit_demo
+
+- rule: Show Customer Support Options
+  steps:
+    - intent: customer_support_menu
+    - action: action_customer_support_menu
+    - action: action_log_conversation
+
+- rule: Start Support Form
+  steps:
+    - intent: contact_support
+    - action: support_form
+    - active_loop: support_form
+
+- rule: Submit Support Form
+  condition:
+    - active_loop: support_form
+  steps:
+    - action: support_form
+    - active_loop: null
+    - action: action_submit_support_form
+    
+- rule: Start Sales Form
+  steps:
+    - intent: contact_sales
+    - action: sales_form
+    - active_loop: sales_form
+
+- rule: Submit Sales Form
+  condition:
+    - active_loop: sales_form
+  steps:
+    - action: sales_form
+    - active_loop: null
+    - action: action_submit_sales_form
+
+
+
+# today
+
+
+- rule: Exit form when user wants to quit
+  steps:
+  - intent: exit_form
+  - action: action_deactivate_loop
+  - action: action_exit_form_message
+  - action: action_reset_all_slots
+  - action: action_main_menu
+
+- rule: Switch to Pricing from form
+  steps:
+  - intent: switch_to_pricing
+  - action: action_deactivate_loop
+  - action: action_reset_all_slots
+  - action: action_pricing_info
+
+- rule: Switch to Explore Services from form
+  steps:
+  - intent: switch_to_explore_services
+  - action: action_deactivate_loop
+  - action: action_reset_all_slots
+  - action: action_explore_services
+
+- rule: Switch to Support from form
+  steps:
+  - intent: switch_to_support
+  - action: action_deactivate_loop
+  - action: action_reset_all_slots
+  - action: action_customer_support_menu
+
+- rule: Switch to Sales from form
+  steps:
+  - intent: switch_to_sales
+  - action: action_deactivate_loop
+  - action: action_reset_all_slots
+  - action: action_customer_support_menu
+
+# Switch from Support Form to Pricing
+- rule: Switch from Support Form to Pricing
+  steps:
+  - intent: switch_to_pricing
+  - action: action_deactivate_loop
+  - action: action_reset_all_slots
+  - action: action_pricing_info
+
+# Switch from Support Form to Explore Services
+- rule: Switch from Support Form to Explore Services
+  steps:
+  - intent: switch_to_explore_services
+  - action: action_deactivate_loop
+  - action: action_reset_all_slots
+  - action: action_explore_services
+
+# Switch from Support Form to Sales
+- rule: Switch from Support Form to Sales
+  steps:
+  - intent: switch_to_sales
+  - action: action_deactivate_loop
+  - action: action_reset_all_slots
+  - action: action_customer_support_menu
+
+  
+# Switch from Sales Form to Pricing
+- rule: Switch from Sales Form to Pricing
+  steps:
+  - intent: switch_to_pricing
+  - action: action_deactivate_loop
+  - action: action_reset_all_slots
+  - action: action_pricing_info
+
+# Switch from Sales Form to Explore Services
+- rule: Switch from Sales Form to Explore Services
+  steps:
+  - intent: switch_to_explore_services
+  - action: action_deactivate_loop
+  - action: action_reset_all_slots
+  - action: action_explore_services
+
+- rule: Handle Demo Module Interrupt from Support Form
+  condition:
+    - active_loop: support_form
+  steps:
+    - intent: demo_module_menu
+    - action: action_handle_demo_module_interrupt
+    - active_loop: null
+
+- rule: Handle Demo Module Interrupt from Sales Form
+  condition:
+    - active_loop: sales_form
+  steps:
+    - intent: demo_module_menu
+    - action: action_handle_demo_module_interrupt
+    - active_loop: null
+
+- rule: Global Custom Fallback
+  steps:
+    - intent: fallback_custom
+    - action: action_custom_fallback
+
+- rule: Handle feedback submission
+  steps:
+    - intent: give_feedback
+    - action: action_store_feedback
+
+- rule: Handle Continue Flow
+  steps:
+    - intent: continue
+    - action: action_continue_chat
+
+- rule: Initiate Live Agent Handover
+  steps:
+  - intent: request_live_agent
+  - action: action_request_live_agent
+
+- rule: End Live Agent Handover
+  steps:
+  - intent: handover_complete
+  - action: action_handover_complete
+
+
+# - rule: show carousel on request
+#   steps:
+#     - intent: explore_services
+#     - action: action_show_carousel

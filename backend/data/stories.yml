@@ -1,0 +1,8 @@
+version: "3.1"
+
+stories:    
+- story: Say goodbye anytime the user says goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+    - action: action_log_conversation
